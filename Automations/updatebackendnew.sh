@@ -1,22 +1,39 @@
 #!/bin/bash
 
-# Set the Instance ID and path to the .env file
-INSTANCE_ID="i-030da7d31a1dbbffc"
-
-# Retrieve the public IP address of the specified EC2 instance
-ipv4_address=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
+# Use localhost (or your local IP if you want)
+LOCAL_IP="localhost"
 
 # Path to the .env file
 file_to_find="../backend/.env.docker"
 
-# Check the current FRONTEND_URL in the .env file
+# Desired FRONTEND_URL
+new_url="FRONTEND_URL=\"http://${LOCAL_IP}:5173\""
+
+# Check the current FRONTEND_URL in the .env file (line 4)
 current_url=$(sed -n "4p" $file_to_find)
 
-# Update the .env file if the IP address has changed
-if [[ "$current_url" != "FRONTEND_URL=\"http://${ipv4_address}:5173\"" ]]; then
+# Update the .env file if the URL has changed
+if [[ "$current_url" != "$new_url" ]]; then
     if [ -f $file_to_find ]; then
-        sed -i -e "s|FRONTEND_URL.*|FRONTEND_URL=\"http://${ipv4_address}:5173\"|g" $file_to_find
+        sed -i -e "s|FRONTEND_URL.*|$new_url|g" $file_to_find
+        echo "Updated FRONTEND_URL to $new_url"
     else
-        echo "ERROR: File not found."
+        echo "ERROR: File not found at $file_to_find"
     fi
+else
+    echo "FRONTEND_URL is already up-to-date"
 fi
+
+~                                                                                                                                                                                     
+~                                                                                                                                                                                     
+~                                                                                                                                                                                     
+~                                                                                                                                                                                     
+~                                                                                                                                                                                     
+~                                                                                                                                                                                     
+~                                                                                                                                                                                     
+~                                                                                                                                                                                     
+~                                                                                                                                                                                     
+~                                                                                                                                                                                     
+~                                                                                                                                                                                     
+~                                                                                                                                                                                     
+~                                                    
