@@ -24,16 +24,4 @@ else
     echo "FRONTEND_URL is already up-to-date"
 fi
 
-~                                                                                                                                                                                     
-~                                                                                                                                                                                     
-~                                                                                                                                                                                     
-~                                                                                                                                                                                     
-~                                                                                                                                                                                     
-~                                                                                                                                                                                     
-~                                                                                                                                                                                     
-~                                                                                                                                                                                     
-~                                                                                                                                                                                     
-~                                                                                                                                                                                     
-~                                                                                                                                                                                     
-~                                                                                                                                                                                     
-~                                                    
+                                            
