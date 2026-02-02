@@ -1,12 +1,13 @@
 apiVersion: v1
-kind: PersistentVolumeClaim
+kind: PersistentVolume
 metadata:
-  name: mongo-pvc
-  namespace: wanderlust
+  name: mongo-pv
 spec:
+  capacity:
+    storage: 5Gi
   accessModes:
     - ReadWriteOnce
-  storageClassName: ""
-  resources:
-    requests:
-      storage: 5Gi
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /data/db
