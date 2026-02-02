@@ -20,9 +20,9 @@ spec:
             - containerPort: 8080
           env:
             - name: MONGO_URI
-              value: mongodb://mongodb-service:27017/wanderlust
+              value: mongodb://mongodb-service.wanderlust.svc.cluster.local:27017/wanderlust
             - name: REDIS_HOST
-              value: redis-service
+              value: redis-service.wanderlust.svc.cluster.local
 ---
 apiVersion: v1
 kind: Service
