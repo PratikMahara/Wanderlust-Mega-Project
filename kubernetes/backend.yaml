@@ -1,10 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-deployment
+  name: backend
   namespace: wanderlust
-  labels:
-    app: backend
 spec:
   replicas: 1
   selector:
@@ -12,15 +10,19 @@ spec:
       app: backend
   template:
     metadata:
-      name: backend
       labels:
         app: backend
     spec:
       containers:
         - name: backend
-          image: trainwithshubham/wanderlust-backend-beta:v2
+          image: pratikmahara/wanderlust-backend-beta:latest
           ports:
             - containerPort: 8080
+          env:
+            - name: MONGO_URI
+              value: mongodb://mongodb-service:27017/wanderlust
+            - name: REDIS_HOST
+              value: redis-service
 ---
 apiVersion: v1
 kind: Service
@@ -34,5 +36,5 @@ spec:
   ports:
     - port: 8080
       targetPort: 8080
-      protocol: TCP
       nodePort: 31100
+
