@@ -13,6 +13,8 @@ spec:
       labels:
         app: mongodb
     spec:
+      securityContext:
+        fsGroup: 999   # <-- THIS IS THE KEY
       containers:
         - name: mongodb
           image: mongo:6
@@ -25,15 +27,3 @@ spec:
         - name: mongo-storage
           persistentVolumeClaim:
             claimName: mongo-pvc
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: mongodb-service
-  namespace: wanderlust
-spec:
-  selector:
-    app: mongodb
-  ports:
-    - port: 27017
-      targetPort: 27017
