@@ -1,10 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend-deployment
+  name: frontend
   namespace: wanderlust
-  labels:
-    app: frontend
 spec:
   replicas: 1
   selector:
@@ -12,13 +10,12 @@ spec:
       app: frontend
   template:
     metadata:
-      name: frontend
       labels:
         app: frontend
     spec:
       containers:
         - name: frontend
-          image: trainwithshubham/wanderlust-frontend-beta:v2
+          image: pratikmahara/wanderlust-frontend-beta:latest
           ports:
             - containerPort: 5173
 ---
@@ -32,7 +29,6 @@ spec:
   selector:
     app: frontend
   ports:
-    - port: 5173
+    - port: 80
       targetPort: 5173
-      protocol: TCP
-      nodePort: 31000
+      nodePort: 30007
