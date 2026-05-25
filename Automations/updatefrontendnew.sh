@@ -7,7 +7,7 @@ LOCAL_IP="localhost"
 file_to_find="../frontend/.env.docker"
 
 # Desired VITE_API_PATH
-new_url="VITE_API_PATH=\"http://${LOCAL_IP}:31100\""
+new_url="VITE_API_PATH=\"http://172.18.0.3:31100\""
 
 # Check the current VITE_API_PATH in the .env file
 current_url=$(grep "VITE_API_PATH" $file_to_find)
