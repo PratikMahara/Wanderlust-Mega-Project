@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: pratikmahara/wanderlust-frontend-beta:v13
+          image: pratikmahara/wanderlust-frontend-beta:v14
           ports:
             - containerPort: 5173
 ---
