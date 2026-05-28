@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: pratikmahara/wanderlust-backend-beta:v20
+          image: pratikmahara/wanderlust-backend-beta:v21
           ports:
             - containerPort: 8080
           env:
